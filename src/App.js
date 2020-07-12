@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import Message from './Message.js'
 
-function App() {
+function Room(){
+  let [isLit, setLit] = useState(false);
+  let [count, setMyCount]=useState(0)
+  const brightness = isLit ? "lit": "dark";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`room ${brightness}`}>
+      the room is {isLit ? "lit" : "dark"}
+      <br/>
+      <button onClick={() => setLit(!isLit)}>
+        Flip Light
+      </button>
+      <hr/>
+      <Message counter={count}/>
+      <button onClick={() => setMyCount(++count)}>
+        + 1
+      </button>
+      
     </div>
-  );
-}
 
+  )
+}
+ReactDOM.render(<Room />, document.querySelector('#root'));
 export default App;
