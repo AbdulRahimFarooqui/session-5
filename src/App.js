@@ -25,4 +25,4 @@ function Room(){
   )
 }
 ReactDOM.render(<Room />, document.querySelector('#root'));
-export default App;
+export default Room;
